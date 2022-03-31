@@ -1,0 +1,341 @@
+#modal-fadeout {
+	display: none;
+	background-color: $color-black;
+	z-index: 99;
+	position: fixed;
+	opacity: .4;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.modal-wrapper {
+	background-color: $color-white;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 110;
+	display: flex;
+	display: none;
+	overflow-y: scroll;
+	align-items: center;
+
+	@media (min-width: $adaptive-width-tablet) {
+		background-color: transparent;
+	}
+
+	& > .modal {
+		overflow: hidden;
+		line-height: 0;
+		display: block;
+		width: 100%;
+		flex-basis: 100%;
+		vertical-align: middle;
+		padding-top: 25px;
+
+		@media (min-width: $adaptive-width-tablet) {
+			padding: 15vh 10%;
+		}
+	}
+}
+
+.modal {
+	& > .contents {
+		background-color: $color-white;
+		color: $color-black;
+		padding: 20px $padding-edges-mobile 25px;
+		position: relative;
+		width: 100%;
+		font-size: 16px;
+		line-height: 1.25;
+		text-align: center;
+
+		@media (min-width: $adaptive-width-tablet) {
+			font-size: 14px;
+			line-height: 1.33;
+			padding: 36px 68px;
+			max-width: 450px;
+			margin: auto;
+			box-shadow: 0px 14px 24px -14px rgba(56, 64, 84, 0.34);
+			@include radius(16px);
+		}
+
+		@media (min-width: $adaptive-width-desktop) {
+			max-width: 779px;
+		}
+
+		.modal-close {
+			display: block;
+			color: $color-black;
+			width: 60px;
+			height: 60px;
+			font-size: 0;
+			position: fixed;
+			top: 0;
+			right: 0;
+			opacity: 1;
+			cursor: pointer;
+			-webkit-tap-highlight-color: transparent;
+
+			@media (min-width: $adaptive-width-tablet) {
+				position: absolute;
+			}
+
+			&:after {
+				content: '';
+			    display: block;
+			    width: 18px;
+			    height: 18px;
+			    background: url('../images/ico_close_modal.svg') no-repeat;
+			    background-size: contain;
+			    position: absolute;
+			    top: 50%;
+			    left: 50%;
+			    transform: translate(-50%, -50%);
+			}
+		}
+
+		h1,
+		.h1 {
+			font-weight: 600;
+			margin-bottom: 32px;
+
+			@media (min-width: $adaptive-width-tablet) {
+				font-weight: 700;
+			}
+		}
+
+		.text {
+			margin: -15px 0 32px;
+		}
+
+		.form {
+			.input {
+				margin-bottom: 17px;
+
+				input[type="text"],
+				input[type="email"],
+				input[type="tel"],
+				input[type="password"] {
+					background-color: #F8F8F8;
+					padding: 18px 16px 17px;
+					margin-bottom: 0;
+					@include radius(8px);
+				}
+
+				&.focused {
+					input[type="text"],
+					input[type="email"],
+					input[type="tel"],
+					input[type="password"] {						
+						padding-top: 23px;
+						padding-bottom: 12px;
+					}
+				}
+			}
+
+			.cb-line {
+				position: relative;
+				text-align: left;
+				margin-bottom: 20px;
+
+				input[type="checkbox"] {
+					position: absolute;
+					z-index: -1;
+					opacity: 0;
+
+					& + label {
+						&:before {
+							content: '';
+							position: absolute;
+							top: 0;
+							left: 0;
+							display: block;
+							width: 20px;
+							height: 20px;
+							background-color: #F8F8F8;
+							@include radius(4px);
+						}
+					}
+
+					&:checked + label {
+						&:before {
+							background: $color-primary url('../images/ico_v.svg') no-repeat 5px 5px;
+						}
+					}
+				}
+
+				label {
+					display: block;
+					cursor: pointer;
+					font-size: 12px;
+					line-height: 1.25;
+					color: #3D5055;
+					padding-left: 28px;
+				}
+			}
+
+			.btn-line {
+				.btn {
+					width: 100%;
+					padding: 18px 28px 19px;
+					@include radius(10px);
+				}
+			}
+		}
+
+		#modal-request & {
+			@media (min-width: $adaptive-width-desktop) {
+				text-align: left;
+				overflow: hidden;
+				padding: 52px 309px 54px 62px;
+
+				&:after {
+					content: '';
+					display: block;
+					position: absolute;
+					top: 30px;
+					right: 31px;
+					width: 268px;
+					height: 521px;
+					background: url('../images/3d_render3.png') no-repeat;
+					background-size: contain;
+				}
+
+				h1,
+				.h1 {
+					font-size: 36px;
+					margin-bottom: 21px;
+				}
+
+				.text {
+					font-size: 18px;
+					margin: 0 0 21px;
+				}
+
+				.form {
+					max-width: 329px;
+
+					.cb-line {
+						max-width: 293px;
+					}
+				}
+			}
+		}
+
+		#modal-thanks & {
+			@media (min-width: $adaptive-width-desktop) {
+				padding: 87px 100px 113px;
+
+				h1,
+				.h1 {
+					font-size: 36px;
+					margin-bottom: 21px;
+
+					&:before {
+						content: '';
+						display: block;
+						width: 70px;
+						height: 70px;
+						background: url('../images/ico_done.svg') no-repeat;
+						background-size: contain;
+						margin: 0 auto 29px;
+					}
+				}
+
+				.text {
+					max-width: 394px;
+					font-size: 18px;
+					margin: 0 auto 21px;
+				}
+
+				.btn {
+					width: 186px;
+					height: 56px;
+					@include radius(10px);
+				}
+			}
+		}
+
+		#modal-partner & {
+			@media (min-width: $adaptive-width-desktop) {
+				text-align: left;
+				overflow: hidden;
+				padding: 52px 309px 54px 62px;
+
+				&:after {
+					content: '';
+					display: block;
+					position: absolute;
+					top: 30px;
+					right: 31px;
+					width: 268px;
+					height: 521px;
+					background: url('../images/3d_render3.png') no-repeat;
+					background-size: contain;
+				}
+
+				h1,
+				.h1 {
+					font-size: 36px;
+					margin-bottom: 21px;
+				}
+
+				.text {
+					font-size: 18px;
+					margin: 0 0 21px;
+				}
+
+				.form {
+					max-width: 329px;
+
+					.cb-line {
+						max-width: 293px;
+					}
+				}
+			}
+		}
+
+		#modal-service & {
+			@media (min-width: $adaptive-width-desktop) {
+				text-align: left;
+				overflow: hidden;
+				padding: 52px 309px 54px 62px;
+
+				&:after {
+					content: '';
+					display: block;
+					position: absolute;
+					top: 30px;
+					right: 31px;
+					width: 268px;
+					height: 521px;
+					background: url('../images/3d_render3.png') no-repeat;
+					background-size: contain;
+				}
+
+				h1,
+				.h1 {
+					font-size: 36px;
+					margin-bottom: 21px;
+				}
+
+				.text {
+					font-size: 18px;
+					margin: 0 0 21px;
+				}
+
+				.form {
+					max-width: 329px;
+
+					.cb-line {
+						max-width: 293px;
+					}
+				}
+			}
+		}
+	}
+}
