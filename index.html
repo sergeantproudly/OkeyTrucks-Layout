@@ -60,13 +60,27 @@
 			<section class="patterned-section">
 				<div id="bl-welcome">
 					<div class="holder">
-						<div id="main-slider">
+						<div id="main-slider" data-interval-timeout="5">
 							<ul>
+								<li class="act">
+									<picture>
+										<source srcset="assets/images/slider_img1.jpg" media="(max-width: 540px)">
+										<source srcset="assets/images/slider_img1.jpg">
+										<img src="assets/images/slider_img1.jpg" alt="">
+									</picture>
+								</li>
 								<li>
 									<picture>
-										<source srcset="assets/images/slider_img1_demo.png" media="(max-width: 540px)">
-										<source srcset="assets/images/slider_img1_demo2.png">
-										<img src="assets/images/slider_img1_demo.png" alt="">
+										<source srcset="assets/images/slider_img2.jpg" media="(max-width: 540px)">
+										<source srcset="assets/images/slider_img2.jpg">
+										<img src="assets/images/slider_img2.jpg" alt="">
+									</picture>
+								</li>
+								<li>
+									<picture>
+										<source srcset="assets/images/slider_img3.jpg" media="(max-width: 540px)">
+										<source srcset="assets/images/slider_img3.jpg">
+										<img src="assets/images/slider_img3.jpg" alt="">
 									</picture>
 								</li>
 							</ul>
@@ -124,7 +138,7 @@
 
 			<section id="bl-where">
 				<h2 class="h1">Где мы находимся</h2>
-				<div id="map"></div>
+				<div id="map" data-header="Окей Тракс" data-desc="<p>Ремонт грузовых авто в сжатые сроки</p>"></div>
 			</section>
 
 			<section id="bl-benefits">
@@ -259,7 +273,7 @@
 							<button class="btn js-modal-link" data-target="#modal-request">Записаться на ТО</button>
 						</div>
 
-						<div id="map2"></div>
+						<div id="map2" data-header="Окей Тракс" data-desc="<p>Ремонт грузовых авто в сжатые сроки</p>"></div>
 					</div>
 				</div>
 			</section>

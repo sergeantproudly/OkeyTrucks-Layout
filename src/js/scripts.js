@@ -125,30 +125,74 @@ document.addEventListener('DOMContentLoaded', function() {
 		threshold: 20
 	});
 
+	// СЛАЙДЕР
+	if ($('#main-slider').length) {
+		function mainSliderNext() {
+			var data = $('#main-slider').data();
+			var indexNext = data.index + 1 < data.length ? data.index + 1 : 0;
+			var slideCurr = $('#main-slider li').eq(data.index);
+			var slideNext = $('#main-slider li').eq(indexNext);
+
+			slideCurr.stop().fadeOut(__animationSpeed * 3);
+			slideNext.stop().fadeIn(__animationSpeed * 3);
+
+			$('#main-slider').data('index', indexNext);
+		}
+
+		function mainSliderInit() {
+			$('#main-slider').data({
+				length: $('#main-slider li').length,
+				index: 0
+			});
+
+			setInterval(function() {
+				mainSliderNext();
+			}, $('#main-slider').attr('data-interval-timeout') * 1000);
+		}
+
+		mainSliderInit();
+	}
+
 	// КАРТА
 	if (typeof(ymaps) != 'undefined') {
 	    ymaps.ready(function () {
 	    	if (document.getElementById('map') != null) {
+	    		var header = $('#map').attr('data-header');
+	    		var desc = $('#map').attr('data-desc');
+
 	    		var map = new ymaps.Map('map', {
 		          	center: [55.871329, 48.622977],
 		          	zoom: 12,
 		          	controls: []
 		        });
-		        var placemark = new ymaps.Placemark(
-		          	[55.871329, 48.622977]
-		        );
+		        var placemark = new ymaps.Placemark(map.getCenter(), {
+		        	balloonContent: '<div class="baloon-content"><div class="h3">' + header + '</div>' + desc + '</div>'
+		        }, {
+		        	iconLayout: 'default#image',
+		        	iconImageHref: 'assets/images/ico_map_placeholder.png',
+		        	iconImageSize: [56, 83],
+		        	iconImageOffset: [-28, -78]
+		        });
 		        map.geoObjects.add(placemark);
 	    	}	        
 
 	    	if (document.getElementById('map2') != null) {
+	    		var header = $('#map2').attr('data-header');
+	    		var desc = $('#map2').attr('data-desc');
+
 	    		var map2 = new ymaps.Map('map2', {
 		          	center: [55.871329, 48.622977],
 		          	zoom: 12,
 		          	controls: []
 		        });
-		        var placemark2 = new ymaps.Placemark(
-		          	[55.871329, 48.622977]
-		        );
+		        var placemark2 = new ymaps.Placemark(map2.getCenter(), {
+		        	balloonContent: '<div class="baloon-content"><div class="h3">' + header + '</div>' + desc + '</div>'
+		        }, {
+		        	iconLayout: 'default#image',
+		        	iconImageHref: 'assets/images/ico_map_placeholder.png',
+		        	iconImageSize: [56, 83],
+		        	iconImageOffset: [-28, -78]
+		        });
 		        map2.geoObjects.add(placemark2);
 	    	}	        
 	    });
